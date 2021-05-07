@@ -77,15 +77,9 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then(tagData => {
-    if(!tagData) {
-      res.status(404).json({message: "No tag found with that ID"})
-      return;
-    }
-    res.json(tagData); 
-  })
+  .then(rowsDeleted => res.json({rowsDeleted}))
   .catch(err => {
-    console.log(err); 
+    console.log(err);
     res.status(500).json(err); 
   })
 });
